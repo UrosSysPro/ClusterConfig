@@ -8,4 +8,8 @@ server {
 
 client {
   enabled = true
+  host_volume "jellyfin" {
+    path      = "/mnt/containers/jellyfin"
+    read_only = false
+  }
 }
