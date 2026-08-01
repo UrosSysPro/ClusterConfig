@@ -1,6 +1,7 @@
 job "jellyfin" {
   datacenters = ["bedroom"]
   type        = "service"
+  provider = "nomad"
 
   group "jellyfin" {
     count = 1
