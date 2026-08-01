@@ -1,7 +1,6 @@
 job "jellyfin" {
   datacenters = ["bedroom"]
   type        = "service"
-  provider = "nomad"
 
   group "jellyfin" {
     count = 1
@@ -59,6 +58,7 @@ job "jellyfin" {
       service {
         name = "jellyfin"
         port = "http"
+        provider = "nomad"
 
         check {
           type     = "http"
