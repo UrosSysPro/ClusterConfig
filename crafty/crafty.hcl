@@ -32,7 +32,7 @@ job "crafty-job" {
     }
 
     network {
-      mode = "bridge"
+      mode = "host"
 
       port "https" {
         static = 8443
