@@ -26,7 +26,7 @@ client {
     path      = "/mnt/containers/crafty/logs"
     read_only = false
   }
-  host_volume "crafty-serers" {
+  host_volume "crafty-servers" {
     path      = "/mnt/containers/crafty/servers"
     read_only = false
   }
