@@ -89,15 +89,15 @@ job "crafty-job" {
 
       service {
         name = "crafty-service"
-        port = "http"
+        port = "https"
         provider = "nomad"
 
-        # check {
-        #   type     = "http"
-        #   path     = "/health"
-        #   interval = "10s"
-        #   timeout  = "2s"
-        # }
+        check {
+          type     = "https"
+          path     = "/"
+          interval = "10s"
+          timeout  = "2s"
+        }
       }
     }
   }
