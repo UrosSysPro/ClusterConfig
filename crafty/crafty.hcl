@@ -5,10 +5,30 @@ job "crafty-job" {
   group "crafty-group" {
     count = 1
 
-    volume "crafty" {
+    volume "crafty-backup" {
       type      = "host"
       read_only = false
-      source    = "crafty"
+      source    = "crafty-backup"
+    }
+    volume "crafty-servers" {
+      type      = "host"
+      read_only = false
+      source    = "crafty-servers"
+    }
+    volume "crafty-logs" {
+      type      = "host"
+      read_only = false
+      source    = "crafty-logs"
+    }
+    volume "crafty-config" {
+      type      = "host"
+      read_only = false
+      source    = "crafty-config"
+    }
+    volume "crafty-import" {
+      type      = "host"
+      read_only = false
+      source    = "crafty-import"
     }
 
     network {
@@ -93,7 +113,7 @@ job "crafty-job" {
         provider = "nomad"
 
         check {
-          type     = "https"
+          type     = "http"
           path     = "/"
           interval = "10s"
           timeout  = "2s"
