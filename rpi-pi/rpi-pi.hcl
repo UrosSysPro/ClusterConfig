@@ -1,6 +1,14 @@
 datacenter = "bedroom"
 data_dir = "/opt/nomad"
 
+# disable plugins
+plugin "java" {
+  enabled = false
+}
+plugin "exec" {
+  enabled = false
+}
+
 client {
   enabled = true
 
