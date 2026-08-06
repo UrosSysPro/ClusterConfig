@@ -6,7 +6,7 @@ job "jellyfin-job" {
     count = 1
 
     constraint{
-      attribute = "{meta.name}"
+      attribute = "${meta.name}"
       value = "dell-xps"
     }
 
