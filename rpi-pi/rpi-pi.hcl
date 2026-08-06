@@ -13,4 +13,8 @@ client {
   enabled = true
 
   servers = ["192.168.31.15:4647"]
+
+  meta {
+    name = "rpi-pi"
+  }
 }

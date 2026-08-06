@@ -5,6 +5,11 @@ job "crafty-job" {
   group "crafty-group" {
     count = 1
 
+    constraint {
+      attribute = "${meta.name}"
+      value     = "rpi-pi"
+    }
+
     volume "crafty-backup" {
       type      = "host"
       read_only = false
@@ -103,8 +108,8 @@ job "crafty-job" {
       }
 
       resources {
-        cpu    = 1000
-        memory = 1024
+        cpu    = 4000
+        memory = 4096
       }
 
       service {
@@ -114,7 +119,7 @@ job "crafty-job" {
 
         check {
           type     = "http"
-          path     = "/"
+          path     = "/status"
           interval = "10s"
           timeout  = "2s"
         }

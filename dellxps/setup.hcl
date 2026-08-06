@@ -8,4 +8,8 @@ server {
 
 client {
   enabled = true
+
+  meta {
+    name = "dell-xps"
+  }
 }

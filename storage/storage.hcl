@@ -28,4 +28,16 @@ client {
     path      = "/mnt/containers/crafty/import"
     read_only = false
   }
+
+
+
+  # qbittorrent
+  host_volume "qbittorrent-config" {
+    path      = "/mnt/containers/qbittorrent/config"
+    read_only = false
+  }
+  host_volume "qbittorrent-downloads" {
+    path      = "/mnt/containers/qbittorrent/downloads"
+    read_only = false
+  }
 }
