@@ -23,7 +23,7 @@ job "qbittorrent-job" {
 
     network {
       port "http" {
-        static = 8081
+        static = 9081
         to = 8080
       }
       port "torrent" {
