@@ -5,6 +5,11 @@ job "qbittorrent-job" {
   group "qbittorrent-group" {
     count = 1
 
+    constraint{
+      attribute = "{meta.name}"
+      value = "dell-xps"
+    }
+
     volume "qbittorrent-config" {
       type      = "host"
       read_only = false

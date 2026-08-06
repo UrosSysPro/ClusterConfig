@@ -1,9 +1,14 @@
-job "jellyfin" {
+job "jellyfin-job" {
   datacenters = ["bedroom"]
   type        = "service"
 
-  group "jellyfin" {
+  group "jellyfin-group" {
     count = 1
+
+    constraint{
+      attribute = "{meta.name}"
+      value = "dell-xps"
+    }
 
     volume "jellyfin" {
       type      = "host"
@@ -30,7 +35,7 @@ job "jellyfin" {
       mode     = "delay"
     }
 
-    task "jellyfin" {
+    task "jellyfin-container" {
       driver = "docker"
 
       volume_mount {

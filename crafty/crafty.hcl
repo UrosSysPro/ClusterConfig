@@ -44,7 +44,7 @@ job "crafty-job" {
         to = 8443
       }
       port "dynmap" {
-        static = 8123
+        static = 8124
         to = 8123
       }
       port "server1" {
