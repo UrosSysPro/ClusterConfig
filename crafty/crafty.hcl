@@ -40,7 +40,7 @@ job "crafty-job" {
       mode = "host"
 
       port "https" {
-        static = 8443
+        static = 9443
         to = 8443
       }
       port "dynmap" {
