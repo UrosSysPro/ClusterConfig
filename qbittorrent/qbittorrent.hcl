@@ -22,6 +22,8 @@ job "qbittorrent-job" {
     }
 
     network {
+      mode = "bridge"
+
       port "http" {
         static = 9081
         to = 8080
@@ -69,6 +71,11 @@ job "qbittorrent-job" {
       resources {
         cpu    = 500
         memory = 1024
+      }
+
+      service {
+        name = "qbittorrent-webui"
+        port = "http"
       }
     }
   }
