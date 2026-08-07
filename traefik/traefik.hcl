@@ -24,7 +24,7 @@ job "traefik-job"{
     }
 
     task "traefik-container"{
-      dirver = "docker"
+      driver = "docker"
 
       config{
         image = "traefik:v3.7"
