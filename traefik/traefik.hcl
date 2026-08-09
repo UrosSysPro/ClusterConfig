@@ -35,6 +35,9 @@ job "traefik-job"{
           "--api.insecure=true",
           "--providers.docker=true",
           "--entrypoints.web.address=:80",
+          "--providers.consul=true",
+          "--providers.consul.endpoints=192.168.31.15:8500",
+          "--providers.consulcatalog=true",
         ]
       }
 
