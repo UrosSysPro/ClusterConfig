@@ -36,10 +36,6 @@ job "cloudflared-job"{
         memory = 128
       }
 
-      env {
-        API_TOKEN = var.cloudflare_api_token
-      }
-
       config{
         image = "cloudflare/cloudflared"
 
@@ -48,7 +44,7 @@ job "cloudflared-job"{
           "--no-autoupdate",
           "run",
           "--token",
-          "$API_TOKEN",
+          "${var.cloudflare_api_token}",
         ]
       }
     }
