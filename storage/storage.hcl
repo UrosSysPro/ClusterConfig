@@ -40,4 +40,11 @@ client {
     path      = "/mnt/containers/qbittorrent/downloads"
     read_only = false
   }
+
+
+  # cloudflared
+  host_volume "cloudflared" {
+    path      = "/mnt/containers/cloudflared"
+    read_only = false
+  }
 }
