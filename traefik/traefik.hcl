@@ -87,10 +87,6 @@ job "traefik-job"{
       env {
         CF_DNS_API_TOKEN = var.cf_api_token
       }
-  # service {
-  #   name = "traefik-dashboard"
-  #   port = "http"
-  # }
     }
   }
 }
