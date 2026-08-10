@@ -56,7 +56,7 @@ client {
   }
 
   host_volume "traefik-certs" {
-    path      = "/mnt/containers/traefik/letsencypt"
+    path      = "/mnt/containers/traefik/letsencrypt"
     read_only = false
   }
 }
