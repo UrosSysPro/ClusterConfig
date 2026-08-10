@@ -1,3 +1,6 @@
+datacenter = "bedroom"
+data_dir = "/opt/nomad"
+
 client {
   # Jellyfin
   host_volume "jellyfin" {
