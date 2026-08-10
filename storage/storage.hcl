@@ -47,4 +47,16 @@ client {
     path      = "/mnt/containers/cloudflared"
     read_only = false
   }
+
+
+  # traefik
+  host_volume "traefik" {
+    path      = "/mnt/containers/traefik"
+    read_only = false
+  }
+
+  host_volume "traefik-certs" {
+    path      = "/mnt/containers/traefik/letsencypt"
+    read_only = false
+  }
 }
