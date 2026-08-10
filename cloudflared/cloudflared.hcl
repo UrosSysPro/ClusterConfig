@@ -1,3 +1,7 @@
+variable "cloudflare_api_token"{
+  type = "string"
+}
+
 job "cloudflared-job"{
   datacenters = ["bedroom"]
   type        = "service"
