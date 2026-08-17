@@ -12,8 +12,8 @@ ui = true
 api_addr = "http://127.0.0.1:8200"
 cluster_addr = "http://127.0.0.1:8201"
 
-AmbientCapabilities=CAP_IPC_LOCK
-LimitMEMLOCK=infinity
+# AmbientCapabilities=CAP_IPC_LOCK
+# LimitMEMLOCK=infinity
 
 disable_mlock = true
 
