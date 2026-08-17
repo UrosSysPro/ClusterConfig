@@ -1,26 +1,26 @@
+storage "file" {
+    path = "/opt/vault/data"
+}
+
+listener "tcp" {
+    address     = "127.0.0.1:8200"
+    tls_disable = "true"
+}
+
 ui = true
 
-#mlock = true
-#disable_mlock = true
+api_addr = "http://127.0.0.1:8200"
+cluster_addr = "http://127.0.0.1:8201"
 
-storage "file" {
-  path = "/opt/vault/data"
+AmbientCapabilities=CAP_IPC_LOCK
+LimitMEMLOCK=infinity
+
+disable_mlock = true
+
+audit_device "file" {
+    path   = "/var/log/vault-audit.log"
+    format = "json"
 }
 
-#storage "consul" {
-#  address = "127.0.0.1:8500"
-#  path    = "vault"
-#}
-
-# HTTP listener
-#listener "tcp" {
-#  address = "127.0.0.1:8200"
-#  tls_disable = 1
-#}
-
-# HTTPS listener
-listener "tcp" {
-  address       = "0.0.0.0:8200"
-  tls_cert_file = "/opt/vault/tls/tls.crt"
-  tls_key_file  = "/opt/vault/tls/tls.key"
-}
+log_file = "/var/log/vault.log"
+log_level = "info"
