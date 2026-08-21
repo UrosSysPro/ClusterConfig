@@ -62,4 +62,10 @@ client {
     path      = "/mnt/containers/traefik/letsencrypt"
     read_only = false
   }
+
+  # wireguard
+  host_volume "wireguard-etc" {
+    path      = "/mnt/containers/wireguard"
+    read_only = false
+  }
 }
