@@ -20,7 +20,7 @@ job "vaultwarden-job"{
 
     network {
       port "http"{
-        to = 8000
+        to = 80
       }
     }
 
@@ -38,6 +38,10 @@ job "vaultwarden-job"{
         memory = 128
       }
 
+      env{
+        DOMAIN = "https://vaultwarden.karaleic.com"
+      }
+
       config{
         image = "vaultwarden/server:latest"
 
@@ -49,13 +53,13 @@ job "vaultwarden-job"{
       name = "vaultwarden-job"
       port = "http"
 
-      check {
-        name     = "alive"
-        type     = "http"
-        path     = "/"
-        interval = "10s"
-        timeout  = "2s"
-      }
+      # check {
+      #   name     = "alive"
+      #   type     = "http"
+      #   path     = "/"
+      #   interval = "10s"
+      #   timeout  = "2s"
+      # }
 
       tags = [
         "traefik.enable=true",
