@@ -68,4 +68,8 @@ client {
     path      = "/mnt/containers/wireguard"
     read_only = false
   }
+  host_volume "wireguard-modules" {
+    path      = "/lib/modules"
+    read_only = true
+  }
 }

@@ -16,6 +16,12 @@ job "wireguard-job"{
       source = "wireguard-etc"
     }
 
+    volume "wireguard-modules"{
+      type = "host"
+      read_only = true
+      source = "wireguard-modules"
+    }
+
     restart {
       attempts = 10
       interval = "5m"
@@ -38,6 +44,12 @@ job "wireguard-job"{
       volume_mount {
         volume      = "wireguard-etc"
         destination = "/etc/wireguard"
+        read_only   = false
+      }
+
+      volume_mount {
+        volume      = "wireguard-modules"
+        destination = "/lib/modules"
         read_only   = true
       }
 
@@ -54,10 +66,6 @@ job "wireguard-job"{
         cap_add = [
           "NET_ADMIN",
           "SYS_MODULE",
-        ]
-
-        volumes = [
-          "/lib/modules:/lib/modules:ro",
         ]
 
         sysctl = {
