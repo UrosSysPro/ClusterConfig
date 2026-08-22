@@ -76,6 +76,12 @@ job "wireguard-job"{
           "net.ipv6.conf.default.forwarding"    = "1"
         }
       }
+
+      tags = [
+        "traefik.enable=true",
+        "traefik.http.routers.wireguard.rule=Host(`wireguard.karaleic.com`)",
+        "traefik.http.routers.wireguard.entrypoints=web",
+      ]
     }
   }
 }
