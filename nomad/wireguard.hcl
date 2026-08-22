@@ -32,6 +32,7 @@ job "wireguard-job"{
     network {
       port "vpn"{
         static = 51820
+        to = 51820
       }
       port "dashboard"{
         static = 51821
@@ -77,10 +78,26 @@ job "wireguard-job"{
         }
       }
 
+    }
+
+    service {
+      name = "wireguard-job"
+      port = "dashboard"
+
+      check {
+        name     = "alive"
+        type     = "http"
+        path     = "/"
+        interval = "10s"
+        timeout  = "2s"
+      }
+
       tags = [
         "traefik.enable=true",
-        "traefik.http.routers.wireguard.rule=Host(`wireguard.karaleic.com`)",
-        "traefik.http.routers.wireguard.entrypoints=web",
+        "traefik.http.routers.wireguard-job.rule=Host(`wireguard.karaleic.com`)",
+        "traefik.http.routers.wireguard-job.entrypoints=web",
+        "traefik.http.routers.wireguard-job.service=wireguard-job",
+        "traefik.http.services.wireguard-job.loadbalancer.server.port=51821"
       ]
     }
   }

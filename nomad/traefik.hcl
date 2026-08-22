@@ -17,7 +17,7 @@ job "traefik-job"{
     }
 
     network {
-      mode = "bridge"
+      mode = "host"
 
       port "http" {
         static = 80
