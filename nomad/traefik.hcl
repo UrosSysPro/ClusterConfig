@@ -54,6 +54,22 @@ job "traefik-job"{
 
         ports = ["http", "https", "dashboard"]
       }
+
+      env {
+        CF_API_EMAIL = "karaleicu@gmail.com"
+      }
+
+      template {
+        data = <<EOH
+      {{- with nomadVar "nomad/jobs/traefik" -}}
+        {{- range .Tuples -}}
+      {{ .K }}={{ .V }}
+        {{- end -}}
+      {{- end -}}
+      EOH
+        destination = "secrets/cloudflare.env"
+        env         = true
+      }
     }
   }
 }

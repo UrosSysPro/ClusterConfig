@@ -95,9 +95,9 @@ job "wireguard-job"{
       tags = [
         "traefik.enable=true",
         "traefik.http.routers.wireguard-job.rule=Host(`wireguard.karaleic.com`)",
-        "traefik.http.routers.wireguard-job.entrypoints=web",
-        "traefik.http.routers.wireguard-job.service=wireguard-job",
-        "traefik.http.services.wireguard-job.loadbalancer.server.port=51821"
+        "traefik.http.routers.wireguard-job.entrypoints=websecure",
+        "traefik.http.services.wireguard-job.loadbalancer.server.port=51821",
+        "traefik.http.routers.wireguard-job.tls.certresolver=cloudflare",
       ]
     }
   }
