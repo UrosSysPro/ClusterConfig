@@ -68,4 +68,11 @@ client {
     path      = "/lib/modules"
     read_only = true
   }
+
+
+  # vaultwarden
+  host_volume "vaultwarden" {
+    path      = "/mnt/containers/vaultwarden"
+    read_only = false
+  }
 }
