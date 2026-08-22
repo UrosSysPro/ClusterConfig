@@ -34,5 +34,7 @@ plugin "docker" {
       "setpcap", "setuid", "sys_chroot",
       "net_admin", "sys_module"
     ]
+
+    allow_privileged = true
   }
 }
