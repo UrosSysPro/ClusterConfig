@@ -1,7 +1,3 @@
-variable "cf_api_token" {
-  type        = string
-}
-
 job "traefik-job"{
   datacenters = ["bedroom"]
   type        = "service"
@@ -13,12 +9,6 @@ job "traefik-job"{
       type      = "host"
       read_only = false
       source    = "traefik"
-    }
-
-    volume "traefik-certs" {
-      type      = "host"
-      read_only = false
-      source    = "traefik-certs"
     }
 
     constraint{
@@ -54,12 +44,6 @@ job "traefik-job"{
       }
 
       volume_mount {
-        volume      = "traefik-certs"
-        destination = "/letsencrypt"
-        read_only   = false
-      }
-
-      volume_mount {
         volume      = "traefik"
         destination = "/etc/traefik"
         read_only   = false
@@ -68,24 +52,7 @@ job "traefik-job"{
       config{
         image = "traefik:v3.7"
 
-        ports = ["http", "dashboard"]
-
-        args = [
-          "--configFile=/etc/traefik/traefik.yml",
-        ]
-      }
-      template {
-        data        = file("traefik.yml")
-        destination = "local/traefik.yml"
-      }
-
-      template {
-        data        = file("dynamic.yml")
-        destination = "local/dynamic.yml"
-      }
-
-      env {
-        CF_DNS_API_TOKEN = var.cf_api_token
+        ports = ["http", "https", "dashboard"]
       }
     }
   }

@@ -58,10 +58,6 @@ client {
     read_only = false
   }
 
-  host_volume "traefik-certs" {
-    path      = "/mnt/containers/traefik/letsencrypt"
-    read_only = false
-  }
 
   # wireguard
   host_volume "wireguard-etc" {
