@@ -31,14 +31,10 @@ job "adguard-job"{
       }
       port "http"{
         to = 80
-        static = 8082
       }
       port "https"{
         to = 443
         static = 8443
-      }
-      port "dashboard"{
-        to = 3000
       }
       port "dot"{
         to = 853
@@ -86,7 +82,6 @@ job "adguard-job"{
           "dns",
           "http",
           "https",
-          "dashboard",
           "dot",
           "dtls",
           "doq",
@@ -97,7 +92,7 @@ job "adguard-job"{
 
     service {
       name = "adguard-job"
-      port = "dashboard"
+      port = "http"
 
       tags = [
         "traefik.enable=true",
