@@ -76,11 +76,13 @@ job "adguard-job"{
 
       resources {
         cpu    = 100
-        memory = 128
+        memory = 256
       }
 
       config{
         image = "adguard/adguardhome"
+
+        privileged = true
 
         ports = [
           "dns",

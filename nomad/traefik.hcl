@@ -71,5 +71,18 @@ job "traefik-job"{
         env         = true
       }
     }
+
+    service {
+      name = "traefik-job"
+      port = "dashboard"
+
+      tags = [
+        "traefik.enable=true",
+        "traefik.http.routers.traefik-job.rule=Host(`traefik.karaleic.com`)",
+        "traefik.http.routers.traefik-job.entrypoints=websecure",
+        # "traefik.http.services.vaultwarden-job.loadbalancer.server.port=51821",
+        "traefik.http.routers.traefik-job.tls.certresolver=cloudflare",
+      ]
+    }
   }
 }
