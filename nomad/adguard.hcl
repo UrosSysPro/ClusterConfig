@@ -65,12 +65,12 @@ job "adguard-job"{
 
       volume_mount {
         volume      = "adguard-conf"
-        destination = "/opt/adguard/conf"
+        destination = "/opt/adguardhome/conf"
         read_only   = false
       }
       volume_mount {
         volume      = "adguard-work"
-        destination = "/opt/adguard/work"
+        destination = "/opt/adguardhome/work"
         read_only   = false
       }
 
