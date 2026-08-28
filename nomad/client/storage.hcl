@@ -75,4 +75,25 @@ client {
     path      = "/mnt/containers/vaultwarden"
     read_only = false
   }
+
+
+  # adguard
+  host_volume "adguard-conf" {
+    path      = "/mnt/containers/adguard/conf"
+    read_only = false
+  }
+
+  host_volume "adguard-work" {
+    path      = "/mnt/containers/adguard/work"
+    read_only = false
+  }
+
+
+
+
+  # home assistand
+  host_volume "home-assistant" {
+    path      = "/mnt/containers/home-assistant"
+    read_only = false
+  }
 }
