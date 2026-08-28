@@ -25,8 +25,6 @@ job "adguard-job"{
     }
 
     network {
-      mode = "host"
-
       port "dns"{
         to = 53
         static = 53
