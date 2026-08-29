@@ -82,18 +82,23 @@ client {
     path      = "/mnt/containers/adguard/conf"
     read_only = false
   }
-
   host_volume "adguard-work" {
     path      = "/mnt/containers/adguard/work"
     read_only = false
   }
 
 
-
-
   # home assistand
-  host_volume "home-assistant" {
-    path      = "/mnt/containers/home-assistant"
+  host_volume "home-assistant-config" {
+    path      = "/mnt/containers/home-assistant/config"
     read_only = false
+  }
+  host_volume "home-assistant-localtime" {
+    path      = "/etc/localtime"
+    read_only = true
+  }
+  host_volume "home-assistant-dbus" {
+    path      = "/run/dbus"
+    read_only = true
   }
 }
