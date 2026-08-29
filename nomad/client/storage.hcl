@@ -101,4 +101,15 @@ client {
     path      = "/run/dbus"
     read_only = true
   }
+
+
+  # esp home
+  host_volume "esphome-config" {
+    path      = "/mnt/containers/esp-home/config"
+    read_only = false
+  }
+  host_volume "esphome-localtime" {
+    path      = "/etc/localtime"
+    read_only = true
+  }
 }
