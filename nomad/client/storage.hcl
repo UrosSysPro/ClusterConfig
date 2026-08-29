@@ -112,4 +112,19 @@ client {
     path      = "/etc/localtime"
     read_only = true
   }
+
+
+  # searxng
+  host_volume "searxng-core-config" {
+    path      = "/mnt/containers/searxng/core-config"
+    read_only = false
+  }
+  host_volume "searxng-core-data" {
+    path      = "/mnt/containers/searxng/core-data"
+    read_only = false
+  }
+  host_volume "searxng-valkey" {
+    path      = "/mnt/containers/searxng/valkey"
+    read_only = false
+  }
 }
