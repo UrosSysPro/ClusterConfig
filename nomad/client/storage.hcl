@@ -137,10 +137,6 @@ client {
 
 
   # gitea runner
-  host_volume "gitea-runner-config" {
-    path      = "/mnt/containers/gitea-runner/config.yaml"
-    read_only = false
-  }
   host_volume "gitea-runner-data" {
     path      = "/mnt/containers/gitea-runner/data"
     read_only = false
