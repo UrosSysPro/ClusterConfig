@@ -59,6 +59,11 @@ job "searxng-job"{
         ports = [
           "search"
         ]
+        cap_add = [
+          "CHOWN",
+          "SETUID",
+          "SETGID"
+        ]
       }
     }
 
@@ -78,6 +83,16 @@ job "searxng-job"{
 
       config{
         image = "docker.io/valkey/valkey:9-alpine"
+
+        entrypoint = ["valkey-server"]
+
+        args = [
+          "--save",
+          "30",
+          "1",
+          "--loglevel",
+          "warning"
+        ]
       }
     }
 
