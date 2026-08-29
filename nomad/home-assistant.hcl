@@ -83,6 +83,9 @@ job "home-assistant-job"{
           "mqtt",
           # "mdns",
         ]
+        env{
+          TZ = "Europe/Belgrade"
+        }
       }
     }
 
