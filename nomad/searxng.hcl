@@ -59,6 +59,7 @@ job "searxng-job"{
         ports = [
           "search"
         ]
+
         cap_add = [
           "CHOWN",
           "SETUID",
