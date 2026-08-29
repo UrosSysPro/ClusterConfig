@@ -42,6 +42,13 @@ job "gitea-runner-job"{
         memory = 512
       }
 
+      env{
+        GITEA_INSTANCE_URL="${GITEA_INSTANCE_URL}"
+        GITEA_RUNNER_REGISTRATION_TOKEN="${GITEA_RUNNER_REGISTRATION_TOKEN}"
+        GITEA_RUNNER_NAME="${GITEA_RUNNER_NAME}"
+        GITEA_RUNNER_LABELS="${GITEA_RUNNER_LABELS}"
+      }
+
       config{
         image = "docker.io/gitea/runner:3-dind"
 
