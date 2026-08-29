@@ -34,6 +34,18 @@ job "home-assistant-job"{
       port "dashboard"{
         to = 8123
       }
+      port "homekit"{
+        to = 51827
+        static = 51827
+      }
+      # port "mdns"{
+      #   to = 5353
+      #   static = 5353
+      # }
+      port "mqtt"{
+        to = 1883
+        static = 1883
+      }
     }
 
     task "home-assistant-container"{
@@ -66,7 +78,10 @@ job "home-assistant-job"{
         privileged = true
 
         ports = [
-          "dashboard"
+          "dashboard",
+          "homekit",
+          "mqtt",
+          # "mdns",
         ]
       }
     }
