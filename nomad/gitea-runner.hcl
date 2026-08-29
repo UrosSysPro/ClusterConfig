@@ -18,11 +18,6 @@ job "gitea-runner-job"{
   group "gitea-runner-group"{
     count = 1
 
-    volume "gitea-runner-config"{
-      type = "host"
-      read_only = false
-      source = "gitea-runner-config"
-    }
     volume "gitea-runner-data"{
       type = "host"
       read_only = false
@@ -40,11 +35,6 @@ job "gitea-runner-job"{
       driver = "docker"
 
       volume_mount {
-        volume      = "gitea-runner-config"
-        destination = "/config.yaml"
-        read_only   = false
-      }
-      volume_mount {
         volume      = "gitea-runner-data"
         destination = "/data"
         read_only   = false
@@ -60,12 +50,14 @@ job "gitea-runner-job"{
         GITEA_RUNNER_REGISTRATION_TOKEN="${var.gitea_runner_registration_token}"
         GITEA_RUNNER_NAME="${var.gitea_runner_name}"
         GITEA_RUNNER_LABELS="${var.gitea_runner_labels}"
+        CONFIG_FILE="/data/config.yaml"
       }
 
       config{
         image = "docker.io/gitea/runner:3-dind"
 
         privileged = true
+
       }
     }
   }
