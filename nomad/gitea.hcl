@@ -67,6 +67,8 @@ job "gitea-job"{
         USER_GID = 1000
       }
 
+      privileged = true
+
       config{
         image = "docker.gitea.com/gitea:1.26.0"
 
