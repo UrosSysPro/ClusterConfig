@@ -72,6 +72,10 @@ job "home-assistant-job"{
         memory = 256
       }
 
+      env{
+        TZ = "Europe/Belgrade"
+      }
+
       config{
         image = "ghcr.io/home-assistant/home-assistant:stable"
 
@@ -83,9 +87,6 @@ job "home-assistant-job"{
           "mqtt",
           # "mdns",
         ]
-        env{
-          TZ = "Europe/Belgrade"
-        }
       }
     }
 
