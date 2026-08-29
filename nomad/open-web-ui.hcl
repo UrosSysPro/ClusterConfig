@@ -48,8 +48,8 @@ job "open-web-ui-job"{
     }
 
     service {
-      name = "searxng-job"
-      port = "search"
+      name = "open-web-ui-job"
+      port = "dashboard"
 
       tags = [
         "traefik.enable=true",
