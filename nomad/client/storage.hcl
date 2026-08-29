@@ -141,4 +141,23 @@ client {
     path      = "/mnt/containers/gitea-runner/data"
     read_only = false
   }
+
+
+  # youtrack
+  host_volume "youtrack-data" {
+    path      = "/mnt/containers/youtrack/data"
+    read_only = false
+  }
+  host_volume "youtrack-conf" {
+    path      = "/mnt/containers/youtrack/conf"
+    read_only = false
+  }
+  host_volume "youtrack-logs" {
+    path      = "/mnt/containers/youtrack/logs"
+    read_only = false
+  }
+  host_volume "youtrack-backups" {
+    path      = "/mnt/containers/youtrack/backups"
+    read_only = false
+  }
 }
