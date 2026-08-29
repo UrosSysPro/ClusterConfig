@@ -160,4 +160,19 @@ client {
     path      = "/mnt/containers/youtrack/backups"
     read_only = false
   }
+
+
+  # gitea
+  host_volume "gitea-data" {
+    path      = "/mnt/containers/gitea"
+    read_only = false
+  }
+  host_volume "gitea-timezone" {
+    path      = "/etc/timezone"
+    read_only = true
+  }
+  host_volume "gitea-localtime" {
+    path      = "/etc/localtime"
+    read_only = true
+  }
 }
