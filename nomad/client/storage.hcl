@@ -129,11 +129,20 @@ client {
   }
 
 
-
-
   # open web ui
   host_volume "open-web-ui" {
     path      = "/mnt/containers/open-web-ui"
+    read_only = false
+  }
+
+
+  # gitea runner
+  host_volume "gitea-runner-config" {
+    path      = "/mnt/containers/gitea-runner/config.yaml"
+    read_only = false
+  }
+  host_volume "gitea-runner-data" {
+    path      = "/mnt/containers/gitea-runner/data"
     read_only = false
   }
 }
