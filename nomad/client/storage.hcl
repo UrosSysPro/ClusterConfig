@@ -127,4 +127,13 @@ client {
     path      = "/mnt/containers/searxng/valkey"
     read_only = false
   }
+
+
+
+
+  # open web ui
+  host_volume "open-web-ui" {
+    path      = "/mnt/containers/open-web-ui"
+    read_only = false
+  }
 }
