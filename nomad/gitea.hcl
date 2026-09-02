@@ -72,24 +72,25 @@ job "gitea-job"{
       }
 
       env{
-        USER_UID = 3000
-        USER_GID = 3
+        USER_UID = 1000
+        USER_GID = 1000
         GITEA__database__DB_TYPE = "postgres"
-        GITEA__database__HOST = "127.0.0.1:5432"
+        GITEA__database__HOST = "192.168.31.15:5432"
         GITEA__database__NAME = "gitea"
         GITEA__database__USER = "gitea"
         GITEA__database__PASSWD = "gitea"
       }
 
       config{
-        image = "docker.gitea.com/gitea:1.26.0"
+        image = "docker.gitea.com/gitea:1.26.0-rootless"
 
-        ports = ["http","ssh"]
+        ports = ["http", "ssh"]
       }
     }
 
     task "gitea-postgres"{
       driver = "docker"
+      user   = "1000:1000"
 
       resources {
         cpu    = 200
@@ -114,7 +115,6 @@ job "gitea-job"{
         ports = ["postgres"]
       }
     }
-
 
     service {
       name = "gitea-job"
