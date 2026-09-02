@@ -164,7 +164,11 @@ client {
 
   # gitea
   host_volume "gitea-data" {
-    path      = "/mnt/containers/gitea"
+    path      = "/mnt/containers/gitea/data"
+    read_only = false
+  }
+  host_volume "gitea-postgres" {
+    path      = "/mnt/containers/gitea/postgres"
     read_only = false
   }
   host_volume "gitea-timezone" {

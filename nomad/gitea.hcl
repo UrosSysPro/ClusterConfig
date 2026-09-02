@@ -15,6 +15,11 @@ job "gitea-job"{
       read_only = false
       source    = "gitea-data"
     }
+    volume "gitea-postgres" {
+      type      = "host"
+      read_only = false
+      source    = "gitea-postgres"
+    }
     volume "gitea-timezone" {
       type      = "host"
       read_only = true
@@ -36,14 +41,18 @@ job "gitea-job"{
         static = 8022
         to = 22
       }
+      port "postgres" {
+        static = 5432
+        to = 5432
+      }
     }
 
     task "gitea-container"{
       driver = "docker"
 
       resources {
-        cpu    = 500
-        memory = 1024
+        cpu    = 200
+        memory = 256
       }
 
       volume_mount {
@@ -63,11 +72,14 @@ job "gitea-job"{
       }
 
       env{
-        USER_UID = 1000
-        USER_GID = 1000
+        USER_UID = 3000
+        USER_GID = 3
+        GITEA__database__DB_TYPE = "postgres"
+        GITEA__database__HOST = "127.0.0.1:5432"
+        GITEA__database__NAME = "gitea"
+        GITEA__database__USER = "gitea"
+        GITEA__database__PASSWD = "gitea"
       }
-
-      privileged = true
 
       config{
         image = "docker.gitea.com/gitea:1.26.0"
@@ -75,6 +87,34 @@ job "gitea-job"{
         ports = ["http","ssh"]
       }
     }
+
+    task "gitea-postgres"{
+      driver = "docker"
+
+      resources {
+        cpu    = 200
+        memory = 256
+      }
+
+      volume_mount {
+        volume      = "gitea-postgres"
+        destination = "/var/lib/postgresql/data"
+        read_only   = false
+      }
+
+      env{
+        POSTGRES_USER     = "gitea"
+        POSTGRES_PASSWORD = "gitea"
+        POSTGRES_DB       = "gitea"
+      }
+
+      config{
+        image = "docker.io/library/postgres:14"
+
+        ports = ["postgres"]
+      }
+    }
+
 
     service {
       name = "gitea-job"
