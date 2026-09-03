@@ -46,18 +46,24 @@ job "gitea-runner-job"{
       }
 
       env{
-        GITEA_INSTANCE_URL="${var.gitea_instance_url}"
-        GITEA_RUNNER_REGISTRATION_TOKEN="${var.gitea_runner_registration_token}"
-        GITEA_RUNNER_NAME="${var.gitea_runner_name}"
-        GITEA_RUNNER_LABELS="${var.gitea_runner_labels}"
-        CONFIG_FILE="/data/config.yaml"
+        GITEA_INSTANCE_URL                = "${var.gitea_instance_url}"
+        GITEA_RUNNER_REGISTRATION_TOKEN   = "${var.gitea_runner_registration_token}"
+        GITEA_RUNNER_NAME                 = "${var.gitea_runner_name}"
+        GITEA_RUNNER_LABELS               = "${var.gitea_runner_labels}"
+        DOCKER_HOST                       = "unix:///var/run/user/1000/docker.sock"
+        DOCKERD_ROOTLESS_ROOTLESSKIT_NET  = "slirp4netns"
+        DOCKERD_ROOTLESS_ROOTLESSKIT_MTU  = 65520
+        CONFIG_FILE                       = "/data/config.yaml"
       }
 
       config{
-        image = "docker.io/gitea/runner:3-dind"
+        image = "docker.io/gitea/runner:3-dind-rootless"
 
         privileged = true
 
+        security_opt = [
+          "apparmor=rootlesskit"
+        ]
       }
     }
   }
