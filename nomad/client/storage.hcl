@@ -167,6 +167,10 @@ client {
     path      = "/mnt/containers/gitea/data"
     read_only = false
   }
+  host_volume "gitea-config" {
+    path      = "/mnt/containers/gitea/config"
+    read_only = false
+  }
   host_volume "gitea-postgres" {
     path      = "/mnt/containers/gitea/postgres"
     read_only = false

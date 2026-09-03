@@ -15,6 +15,11 @@ job "gitea-job"{
       read_only = false
       source    = "gitea-data"
     }
+    volume "gitea-config" {
+      type      = "host"
+      read_only = false
+      source    = "gitea-config"
+    }
     volume "gitea-postgres" {
       type      = "host"
       read_only = false
@@ -57,7 +62,12 @@ job "gitea-job"{
 
       volume_mount {
         volume      = "gitea-data"
-        destination = "/data"
+        destination = "/var/lib/gitea"
+        read_only   = false
+      }
+      volume_mount {
+        volume      = "gitea-config"
+        destination = "/etc/gitea"
         read_only   = false
       }
       volume_mount {
