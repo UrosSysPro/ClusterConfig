@@ -40,11 +40,12 @@ job "gitea-job"{
       mode = "host"
 
       port "http" {
+        static = 3000
         to = 3000
       }
       port "ssh" {
-        static = 8022
-        to = 22
+        static = 2222
+        to = 2222
       }
       port "postgres" {
         static = 5432
