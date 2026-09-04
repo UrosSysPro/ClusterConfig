@@ -68,8 +68,8 @@ job "home-assistant-job"{
       }
 
       resources {
-        cpu    = 100
-        memory = 256
+        cpu    = 2048
+        memory = 2048
       }
 
       env{
