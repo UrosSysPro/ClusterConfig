@@ -41,8 +41,8 @@ job "gitea-runner-job"{
       }
 
       resources {
-        cpu    = 500
-        memory = 2048
+        cpu    = 2048
+        memory = 4096
       }
 
       env{
