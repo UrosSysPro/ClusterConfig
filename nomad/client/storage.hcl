@@ -183,4 +183,23 @@ client {
     path      = "/etc/localtime"
     read_only = true
   }
+
+
+  # immich
+  host_volume "immich-data" {
+    path      = "/mnt/containers/immich/data"
+    read_only = false
+  }
+  host_volume "immich-pgdata" {
+    path      = "/mnt/containers/immich/pgdata"
+    read_only = false
+  }
+  host_volume "immich-model-cache" {
+    path      = "/mnt/containers/immich/model-cache"
+    read_only = false
+  }
+  host_volume "immich-localtime" {
+    path      = "/etc/localtime"
+    read_only = true
+  }
 }
