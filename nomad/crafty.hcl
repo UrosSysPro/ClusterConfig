@@ -108,8 +108,8 @@ job "crafty-job" {
       }
 
       resources {
-        cpu    = 4000
-        memory = 4096
+        cpu    = 8000
+        memory = 6096
       }
 
       service {
@@ -123,6 +123,12 @@ job "crafty-job" {
           interval = "10s"
           timeout  = "2s"
         }
+        tags = [
+          "traefik.enable=true",
+          "traefik.http.routers.crafty-job.rule=Host(`crafty.karaleic.com`)",
+          "traefik.http.routers.crafty-job.entrypoints=websecure",
+          "traefik.http.routers.crafty-job.tls.certresolver=cloudflare",
+        ]
       }
     }
   }
