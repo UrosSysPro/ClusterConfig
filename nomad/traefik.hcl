@@ -1,3 +1,7 @@
+variable "cf_api_token"{
+  type = string
+}
+
 job "traefik-job"{
   datacenters = ["bedroom"]
   type        = "service"
@@ -56,19 +60,8 @@ job "traefik-job"{
       }
 
       env {
-        CF_API_EMAIL = "karaleicu@gmail.com"
-      }
-
-      template {
-        data = <<EOH
-      {{- with nomadVar "nomad/jobs/traefik" -}}
-        {{- range .Tuples -}}
-      {{ .K }}={{ .V }}
-        {{- end -}}
-      {{- end -}}
-      EOH
-        destination = "secrets/cloudflare.env"
-        env         = true
+        CF_API_EMAIL     = "karaleicu@gmail.com"
+        CF_DNS_API_TOKEN = "${var.cf_api_token}"
       }
     }
 
