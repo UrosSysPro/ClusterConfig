@@ -113,21 +113,16 @@ job "crafty-job" {
       }
 
       service {
-        name = "crafty-service"
+        name = "crafty-job"
         port = "https"
-        provider = "nomad"
 
-        check {
-          type     = "http"
-          path     = "/status"
-          interval = "10s"
-          timeout  = "2s"
-        }
         tags = [
           "traefik.enable=true",
           "traefik.http.routers.crafty-job.rule=Host(`crafty.karaleic.com`)",
           "traefik.http.routers.crafty-job.entrypoints=websecure",
           "traefik.http.routers.crafty-job.tls.certresolver=cloudflare",
+          "traefik.http.services.crafty-job.loadbalancer.server.scheme=https",
+          "traefik.http.middlewares.sslheader.headers.customrequestheaders.X-Forwarded-Proto = https",
         ]
       }
     }
