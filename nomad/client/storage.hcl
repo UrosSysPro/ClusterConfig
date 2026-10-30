@@ -8,8 +8,6 @@ client {
     read_only = false
   }
 
-
-
   #  Crafty
   host_volume "crafty-backup" {
     path      = "/mnt/containers/crafty/backup"
@@ -32,8 +30,6 @@ client {
     read_only = false
   }
 
-
-
   # qbittorrent
   host_volume "qbittorrent-config" {
     path      = "/mnt/containers/qbittorrent/config"
@@ -44,20 +40,17 @@ client {
     read_only = false
   }
 
-
   # cloudflared
   host_volume "cloudflared" {
     path      = "/mnt/containers/cloudflared"
     read_only = false
   }
 
-
   # traefik
   host_volume "traefik" {
     path      = "/mnt/containers/traefik"
     read_only = false
   }
-
 
   # wireguard
   host_volume "wireguard-etc" {
@@ -69,13 +62,11 @@ client {
     read_only = true
   }
 
-
   # vaultwarden
   host_volume "vaultwarden" {
     path      = "/mnt/containers/vaultwarden"
     read_only = false
   }
-
 
   # adguard
   host_volume "adguard-conf" {
@@ -86,7 +77,6 @@ client {
     path      = "/mnt/containers/adguard/work"
     read_only = false
   }
-
 
   # home assistand
   host_volume "home-assistant-config" {
@@ -102,7 +92,6 @@ client {
     read_only = true
   }
 
-
   # esp home
   host_volume "esphome-config" {
     path      = "/mnt/containers/esp-home/config"
@@ -112,7 +101,6 @@ client {
     path      = "/etc/localtime"
     read_only = true
   }
-
 
   # searxng
   host_volume "searxng-core-config" {
@@ -128,20 +116,17 @@ client {
     read_only = false
   }
 
-
   # open web ui
   host_volume "open-web-ui" {
     path      = "/mnt/containers/open-web-ui"
     read_only = false
   }
 
-
   # gitea runner
   host_volume "gitea-runner-data" {
     path      = "/mnt/containers/gitea-runner/data"
     read_only = false
   }
-
 
   # youtrack
   host_volume "youtrack-data" {
@@ -160,7 +145,6 @@ client {
     path      = "/mnt/containers/youtrack/backups"
     read_only = false
   }
-
 
   # gitea
   host_volume "gitea-data" {
@@ -183,7 +167,6 @@ client {
     path      = "/etc/localtime"
     read_only = true
   }
-
 
   # immich
   host_volume "immich-data" {
